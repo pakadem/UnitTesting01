@@ -1,7 +1,4 @@
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 import org.junit.runner.RunWith;
 
 import static org.junit.Assert.*;
@@ -19,8 +16,34 @@ public class MavenUnit01Test {
     public void main() {
     }
 
+    //Object Equality
     @Test
-    public void addition() {
+    public void additionEquality() {
+        Assert.assertEquals(8, MavenUnit01.addition(3,5));
+    }
+
+    //Object Identity
+    @Test
+    public void additionIdentity() {
+        Assert.assertNotSame(8, MavenUnit01.addition(3,5));
+    }
+
+    //Timeouts
+    @Test(timeout = 6)
+    public void additionTimeOut() {
+        while (true);
+    }
+
+    //Failing
+    @Test
+    public void additionFail() {
+        Assert.assertNotEquals(2, MavenUnit01.addition(3,5));
+    }
+
+    //Disabled Test
+    @Ignore
+    @Test
+    public void additionDisable() {
         Assert.assertEquals(8, MavenUnit01.addition(3,5));
     }
 }
